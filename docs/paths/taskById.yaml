@@ -1,0 +1,34 @@
+get:
+  summary: get a task by ID
+  tags:
+    - Tasks
+  parameters:
+    - name: id
+      in: path
+      required: true
+      description: Id of the task to get task
+      schema:
+        type: integer
+        example: 1
+  responses:
+    '200':
+      description: Task Found
+      content:
+        application/json:
+          schema:
+              $ref: ../components/schemas/Task.yaml
+
+    '400':
+            $ref:  ../components/responses/BadRequest.yaml
+
+    '404':
+      description: Task not Found
+      content:
+        application/json:
+          schema:
+             type: object
+             properties: 
+               error: 
+                 type: string
+                 example: Task not found
+      
